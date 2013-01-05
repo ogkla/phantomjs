@@ -69,6 +69,7 @@ static const struct QCommandLineConfigEntry flags[] =
     { QCommandLine::Param, '\0', "argument", "Script argument", QCommandLine::OptionalMultiple },
     { QCommandLine::Switch, 'h', "help", "Shows this message and quits", QCommandLine::Optional },
     { QCommandLine::Switch, 'v', "version", "Prints out PhantomJS version", QCommandLine::Optional },
+    { QCommandLine::Option, '\0', "ignore-resource", "Regex of the resource that would be ignored. default off", QCommandLine::Optional },
     QCOMMANDLINE_CONFIG_ENTRY_END
 };
 
@@ -147,6 +148,16 @@ void Config::loadJsonFile(const QString &filePath)
     webPage.mainFrame()->addToJavaScriptWindowObject("config", this);
     // Apply the JSON config settings to this very object
     webPage.mainFrame()->evaluateJavaScript(configurator.arg(jsonConfig), QString());
+}
+
+QString Config::ignoreResourceRegexp() const 
+{
+	return m_ignoreResourceRegexp;
+}
+
+void Config::setIgnoreResourceRegexp(const QString &value)
+{
+	m_ignoreResourceRegexp = value;
 }
 
 QString Config::helpText() const
@@ -487,6 +498,7 @@ void Config::resetToDefaults()
 {
     m_autoLoadImages = true;
     m_cookiesFile = QString();
+		m_ignoreResourceRegexp = QString();
     m_offlineStoragePath = QString();
     m_offlineStorageDefaultQuota = -1;
     m_diskCacheEnabled = false;
@@ -581,6 +593,10 @@ void Config::handleOption(const QString &option, const QVariant &value)
             return;
         }
         boolValue = (value == "true") || (value == "yes");
+    }
+
+    if (option == "ignore-resource") {
+        setIgnoreResourceRegexp(value.toString());
     }
 
     if (option == "cookies-file") {

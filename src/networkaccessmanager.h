@@ -73,6 +73,7 @@ protected:
     int m_maxAuthAttempts;
     QString m_userName;
     QString m_password;
+		QString m_ignoreResourceRegexp;
     QNetworkReply *createRequest(Operation op, const QNetworkRequest & req, QIODevice * outgoingData = 0);
     void handleFinished(QNetworkReply *reply, const QVariant &status, const QVariant &statusText);
 

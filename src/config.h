@@ -42,6 +42,7 @@ class Config: public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString cookiesFile READ cookiesFile WRITE setCookiesFile)
+		Q_PROPERTY(QString ignoreResourceRegexp  READ ignoreResourceRegexp WRITE setIgnoreResourceRegexp)
     Q_PROPERTY(bool diskCacheEnabled READ diskCacheEnabled WRITE setDiskCacheEnabled)
     Q_PROPERTY(int maxDiskCacheSize READ maxDiskCacheSize WRITE setMaxDiskCacheSize)
     Q_PROPERTY(bool ignoreSslErrors READ ignoreSslErrors WRITE setIgnoreSslErrors)
@@ -75,6 +76,9 @@ public:
 
     QString cookiesFile() const;
     void setCookiesFile(const QString &cookiesFile);
+
+		QString ignoreResourceRegexp() const;
+		void setIgnoreResourceRegexp(const QString &ignoreResourceRegexp);
 
     QString offlineStoragePath() const;
     void setOfflineStoragePath(const QString &value);
@@ -177,6 +181,7 @@ private:
     QCommandLine *m_cmdLine;
     bool m_autoLoadImages;
     QString m_cookiesFile;
+		QString m_ignoreResourceRegexp;
     QString m_offlineStoragePath;
     int m_offlineStorageDefaultQuota;
     bool m_diskCacheEnabled;
