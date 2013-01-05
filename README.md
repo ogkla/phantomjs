@@ -43,3 +43,12 @@ PhantomJS is free software/open source, and is distributed under the [BSD licens
 
 PhantomJS is created and maintained by [Ariya Hidayat](http://ariya.ofilabs.com/about) (Twitter: [@ariyahidayat](http://twitter.com/ariyahidayat)), with the help of [many contributors](https://github.com/ariya/phantomjs/contributors).
 
+## What's new??
+
+- A very common usage for phantomjs is to scrap information from others site. In this case loading of additional resources like css or js is not required. They unecessarily consume time.
+I have added a flag -ignore-resource which takes a regular expression as its input. Any resource that matches the regular expression will not be called. 
+
+For example:-
+ phantomjs --ignore-resource='\.css$' script.js 
+ 
+ This will help in improving you scrapping efficiency :)
