@@ -1,4 +1,4 @@
-# [PhantomJS](http://phantomjs.org) - Scriptable Headless WebKit
+# [PhantomJS ignore resources](http://phantomjs.org) - Scriptable Headless WebKit (Added flag to ignore resources matching input regex)
 
 PhantomJS ([www.phantomjs.org](http://phantomjs.org)) is a headless WebKit scriptable with JavaScript or CoffeeScript. It is used by hundreds of [developers](https://github.com/ariya/phantomjs/wiki/Buzz) and dozens of [organizations](https://github.com/ariya/phantomjs/wiki/Users) for web-related development workflow.
 
